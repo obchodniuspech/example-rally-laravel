@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TeamsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', [TeamsController::class, 'index'])->name('teams.index');
+
+Route::group(['prefix' => 'teams'], static function () {
+    Route::get('/delete/{id}}', [TeamsController::class, 'delete'])->name('delete');
 });
